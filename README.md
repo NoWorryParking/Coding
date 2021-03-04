@@ -4,9 +4,9 @@
 Vrei sa uiti de cautarea frenetica a parcarii in captiala sau de stresul de a pleca cu o ora inainte doar pentru a cauta parcare? Atunci **NoWorryParking** e pentru tine.
 
 ## Membrii echipei
-* [Anghelache Vlad Alexandru]()
-* [Iordache Denisa-Elena]()
-* [Iuga Paula]()
+* [Anghelache Vlad Alexandru](https://github.com/vladanghelache)
+* [Iordache Denisa-Elena](https://github.com/denisaiordache)
+* [Iuga Paula](https://github.com/iuga-paula)
 * [Nedelcu Radu-Andrei]()
 
 ## Tehnologii
