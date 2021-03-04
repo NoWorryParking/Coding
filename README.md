@@ -14,6 +14,7 @@ Aplicatia Android este creata in **Unity** utilizand:
 * C#
 * Unity SDK (pt. harti)
 * Unity IAP (pt. plati)
+* FireBase
 
 
 ## Fisiere
