@@ -7,7 +7,7 @@ Vrei sa uiti de cautarea frenetica a parcarii in captiala sau de stresul de a pl
 * [Anghelache Vlad Alexandru](https://github.com/vladanghelache)
 * [Iordache Denisa-Elena](https://github.com/denisaiordache)
 * [Iuga Paula](https://github.com/iuga-paula)
-* [Nedelcu Radu-Andrei]()
+* [Nedelcu Radu-Andrei](https://github.com/NedelcuRadu)
 
 ## Tehnologii
 Aplicatia Android este creata in **Unity** utilizand:
