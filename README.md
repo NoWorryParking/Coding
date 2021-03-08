@@ -9,6 +9,11 @@ Vrei sa uiti de cautarea frenetica a parcarii in captiala sau de stresul de a pl
 * [Iuga Paula](https://github.com/iuga-paula)
 * [Nedelcu Radu-Andrei](https://github.com/NedelcuRadu)
 
+## User stories
+
+## Descriere
+
+
 ## Tehnologii
 Aplicatia Android este creata in **Unity** utilizand:
 * C#
