@@ -21,7 +21,7 @@ _Ca un ... as vrea ..., ca sa pot/ pentru a putea..._
 8. Fiind o persoană nevaccinată, aș vrea să pot plăti fără a pune mâna pe bancnote / interacționa cu oamenii pentru a reduce riscul de răspândire a COVID-19.
 9. Ca un sofer fara experienta, as vrea sa gasesc o parcare intr-o zona neaglomerata pentru a putea efectua manevre in liniste.
 10. Ca un proprietar de parcare privata, as vrea sa imi promovez parcarea, pentru a atrage mai mult clienti. 
-11. Ca un utilizator comun, as vrea sa fiu anuntat daca parcarea pe care am rezervat-o e ocupata de altcineva, pentru a putea alege alta in timp util.
+<!--11. Ca un utilizator comun, as vrea sa fiu anuntat daca parcarea pe care am rezervat-o e ocupata de altcineva, pentru a putea alege alta in timp util.-->
 
 ## Descriere
 
