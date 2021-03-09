@@ -27,8 +27,8 @@ _Ca un ... as vrea ..., ca sa pot/ pentru a putea..._
 * Un utilizator obisnuit, odata ce aceeaza aplicatia poate vedea o harta a Bucurestiului de unde poate selecta zone in care doreste sa rezerve loc de parcare.
 Aplicatia rezerva loc de parcare doar in anumite zone de parcare publica/privata cu plata.
 O data selectata o zona de pe harta, 
-- daca exista parcare in acea zona, va trebui sa selecteze o ora si o data in care vrea sa ii rezerve parcarea. Poate sa vada total locuri de parcare si cate locuri de parcare sunt disponibile. 
-- daca nu exista, aplicatia ii va genera o parcare intr-o zona aflata in aproximitatea celei cautate.
+  - daca exista parcare in acea zona, va trebui sa selecteze o ora si o data in care vrea sa ii rezerve parcarea. Poate sa vada total locuri de parcare si cate locuri de parcare sunt disponibile. 
+  - daca nu exista, aplicatia ii va genera o parcare intr-o zona aflata in aproximitatea celei cautate.
 O data ales un numar de loc de parcari utilizatorul le poate rezerva pentru un anumit intrerval de timp (mimim o ora, maxim o zi) si le poate si plati.
 Utilizatorul isi poate vedea un istoric al locurilor rezervate anterior si poate repeta o comanda din istoric (daca nu este disponibila i se va afisa un mesaj si o alta parcare dintr-o zona aflata in arpoximitatea celei indispobile).
 
