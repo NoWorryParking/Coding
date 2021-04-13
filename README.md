@@ -49,3 +49,9 @@ Aplicatia Android este creata in **Unity** utilizand:
 
 
 ## Fisiere
+
+## Cum se importa proiect nou
+```
+D:cale_folder\Coding-main\Assets\Scenes
+SampleScene => MainScene
+```
