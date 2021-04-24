@@ -48,7 +48,8 @@ Aplicatia Android este creata in **Unity** utilizand:
 * FireBase
 
 
-## Fisiere
+## Wireframe
+Un model al aplicației și câteva detalii de implementare se pot găsi [aici](https://app.moqups.com/TB9tngLAkw/view)
 
 ## Cum se importa proiect nou
 ```
