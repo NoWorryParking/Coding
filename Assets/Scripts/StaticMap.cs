@@ -37,12 +37,15 @@ public class StaticMap : MonoBehaviour
                 ParkingSpot parking = new ParkingSpot();
                 var geometryDict = (Dictionary<string, object>) parkingDict["geometry"];
                 var locationDict = (Dictionary<string, object>) geometryDict["location"];
-                parking.lat =  float.Parse(locationDict["lat"].ToString());
+                /*parking.lat =  float.Parse(locationDict["lat"].ToString());
                 parking.lng = float.Parse(locationDict["lng"].ToString());
                 parking.icon = (string) parkingDict["icon"];
                 parking.name = (string) parkingDict["name"];
                 parking.place_id = (string) parkingDict["place_id"];
-                parking.reference = (string) parkingDict["reference"];
+                parking.reference = (string) parkingDict["reference"];*/
+                parking.info = parkingDict;
+                parking.info.Add("lat", float.Parse(locationDict["lat"].ToString()));
+                parking.info.Add("lng", float.Parse(locationDict["lng"].ToString()));
                 creator.AddLocation(parking);
               
             }
@@ -71,13 +74,16 @@ public class StaticMap : MonoBehaviour
                         ParkingSpot parking = new ParkingSpot();
                         var geometryDict = (Dictionary<string, object>) parkingDict["geometry"];
                         var locationDict = (Dictionary<string, object>) geometryDict["location"];
-                        parking.lat = float.Parse(locationDict["lat"].ToString());
-                        parking.lng = float.Parse(locationDict["lng"].ToString());
-                        parking.icon = (string) parkingDict["icon"];
-                        parking.name = (string) parkingDict["name"];
-                        parking.place_id = (string) parkingDict["place_id"];
-                        parking.reference = (string) parkingDict["reference"];
-                       creator.AddLocation(parking);
+                        /*parking.lat =  float.Parse(locationDict["lat"].ToString());
+                 parking.lng = float.Parse(locationDict["lng"].ToString());
+                 parking.icon = (string) parkingDict["icon"];
+                 parking.name = (string) parkingDict["name"];
+                 parking.place_id = (string) parkingDict["place_id"];
+                 parking.reference = (string) parkingDict["reference"];*/
+                        parking.info = parkingDict;
+                        parking.info.Add("lat", float.Parse(locationDict["lat"].ToString()));
+                        parking.info.Add("lng", float.Parse(locationDict["lng"].ToString()));
+                        creator.AddLocation(parking);
                         
                     }
                 }
