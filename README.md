@@ -54,5 +54,5 @@ Un model al aplicației și câteva detalii de implementare se pot găsi [aici](
 ## Cum se importa proiect nou
 ```
 D:cale_folder\Coding-main\Assets\Scenes
-SampleScene => MainScene
+Welcome => pagina de start
 ```
