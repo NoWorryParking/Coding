@@ -51,6 +51,9 @@ Aplicatia Android este creata in **Unity** utilizand:
 ## Wireframe
 Un model al aplicației și câteva detalii de implementare se pot găsi [aici](https://app.moqups.com/TB9tngLAkw/view)
 
+## Diagrama Conceptuala
+![bd](https://github.com/NoWorryParking/Coding/blob/main/Bd.JPG)
+
 ## Cum se importa proiect nou
 ```
 D:cale_folder\Coding-main\Assets\Scenes
