@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuInfoController : MonoBehaviour
 {
-    public Text name;
-    public Text locuriDisp;
-    public Text locuriTotale;
-    public Text adresa;
+    public TextMeshProUGUI name;
+    public TextMeshProUGUI locuriDisp;
+    public TextMeshProUGUI locuriTotale;
+    public TextMeshProUGUI adresa;
 
     public void closeMenu()
     {
