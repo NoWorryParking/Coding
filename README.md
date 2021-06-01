@@ -48,4 +48,23 @@ Aplicatia Android este creata in **Unity** utilizand:
 * FireBase
 
 
-## Fisiere
+## Wireframe
+Un model al aplicației și câteva detalii de implementare se pot găsi [aici](https://app.moqups.com/TB9tngLAkw/view)
+
+## Diagrama Conceptuala
+![bd](https://github.com/NoWorryParking/Coding/blob/main/Bd.JPG)
+
+## Cum se importa proiect nou
+```
+D:cale_folder\Coding-main\Assets\Scenes
+Welcome => pagina de start
+```
+
+## Cum se pune sdk pe mobil de pe Unity
+* Usb trb sa fie conectat cu Developer Mode
+* Telefonul trb sa fie cu usb conectat pentru transfer files
+* Sa fie setat Android in File > Build Settings , altfel click pe Android si switch platform
+```
+File > Build and Run
+
+```
