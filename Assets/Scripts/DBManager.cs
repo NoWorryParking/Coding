@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class DBManager : MonoBehaviour
 {
     private string secretKey = "noworrypSecretKey"; // Edit this value and make sure it's the same as the one stored on the server
-    private string insertParkingURL = "http://noworryparking.online/insertparking2.php?"; //be sure to add a ? to your url if using WWW
+    private string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
   
 
     // remember to use StartCoroutine when calling this function!
@@ -22,7 +22,7 @@ public class DBManager : MonoBehaviour
         int nrloc = Random.Range(10, 200);
         string hash = Md5Sum(name + locatie + secretKey);
 
-        string post_url = insertParkingURL + "id=" + WWW.EscapeURL(id) + "name=" + WWW.EscapeURL(name) + "&lng=" + lng + "&lat=" + lat + "&nrloc=" + nrloc  +"&loc=" + WWW.EscapeURL(locatie) + "&hash=" + hash;
+        string post_url = insertParkingURL + "id=" + WWW.EscapeURL(id) + "&name=" + WWW.EscapeURL(name) + "&lng=" + lng + "&lat=" + lat + "&nrloc=" + nrloc  +"&loc=" + WWW.EscapeURL(locatie) + "&hash=" + hash;
         print(post_url);
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);
