@@ -7,7 +7,8 @@ public class DBManager : MonoBehaviour
 {
     private string secretKey = "noworrypSecretKey"; // Edit this value and make sure it's the same as the one stored on the server
     private string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
-  
+    private string insertUserURL = "http://noworryparking.online/insertUser.php?"; //be sure to add a ? to your url if using WWW
+
 
     // remember to use StartCoroutine when calling this function!
     public IEnumerator InsertParking(ParkingSpot parking)
@@ -33,6 +34,26 @@ public class DBManager : MonoBehaviour
             print("There was an error posting the high score: " + hs_post.error);
         }
     }
+    public IEnumerator InsertUser(string nume, string prenume, string email, string parola)
+    {
+        //This connects to a server side php script that will add the name and score to a MySQL DB.
+        // Supply it with a string representing the players name and the players score.
+        string hash = Md5Sum(prenume + nume + email + secretKey);
+        parola = Md5Sum(parola);
+
+        string post_url = insertUserURL + "&nume=" + WWW.EscapeURL(nume) + "&prenume=" + WWW.EscapeURL(prenume) + "&parola=" + WWW.EscapeURL(parola) + "&email=" + WWW.EscapeURL(email) + "&hash=" + hash;
+        print(post_url);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+
+        if (hs_post.error != null)
+        {
+            print("There was an error posting the high score: " + hs_post.error);
+        }
+    }
+
+
     private string Md5Sum(string strToEncrypt)
     {
         System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding();
