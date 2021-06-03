@@ -1,14 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Mapbox.Examples;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.Events;
+using Michsky.UI.ModernUIPack;
 
-
-namespace Michsky.UI.ModernUIPack
-{
 public class MenuController : MonoBehaviour
 {
     private GameObject popupMenu;
@@ -18,7 +11,7 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //popupMenu = GameObject.Find("PopUpMenu");
+      
         popupMenu1 = GameObject.Find("ContentPopUpMenu");
         modalWindow = GameObject.Find("PopUpInfoParcare");
         poi = gameObject.GetComponentInParent<PoiLabelTextSetter>();
@@ -26,11 +19,11 @@ public class MenuController : MonoBehaviour
 
     void OnMouseUpAsButton()
     {
-        //popupMenu.GetComponent<MenuInfoController>().setInfo(poi.info);
+       
         popupMenu1.GetComponent<MenuInfoController>().setInfo(poi.info);
         modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
         //LeanTween.scale(popupMenu, new Vector3(1, 1, 1), 0.25f);
     }
 }
-}
+
 

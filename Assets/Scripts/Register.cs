@@ -1,49 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
-using System.Globalization;
 using System.Linq;
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Mapbox.Examples;
-using UnityEngine;
-using UnityEngine.UI;
+using Michsky.UI.ModernUIPack;
 using TMPro;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour
 {
-    [SerializeField] private DBManager manager;
-
-    public Text email;
-    public Text nume;
-    public Text prenume;
-    public Text parola;
-    public Text confirmare;
+    [SerializeField] private TMP_InputField email;
+    [SerializeField] private TMP_InputField nume;
+    [SerializeField] private TMP_InputField prenume;
+    [SerializeField] private TMP_InputField parola;
+    [SerializeField] private TMP_InputField confirmare;
+  
     public Text popoutText;
-
     public GameObject modalWindow;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
    
-
-
-
     public void GetAllTextFromInputFields()
     {
         string err_email = "";
@@ -122,11 +96,22 @@ public class Register : MonoBehaviour
         if (err_parola == "" && err_nume == "" && err_prenume == "" && err_email == "" && err_confirmare == "") //daca nu sunt erori
         {
             print("user " + nume + " " + prenume + "email " + email);
-            manager.InsertUser(nume.text, prenume.text, email.text, parola.text);
+           StartCoroutine(DBManager.InsertUser(nume.text, prenume.text, email.text, parola.text));
+            if (User.email != "") //Daca a avut loc cu succes
+            {
+                SceneManager.LoadScene("POIPlacement");
+            }
+            else //Afisez popup de eroare
+            {
+                modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
+                popoutText.text = "A aparut o problema la inserarea in baza de date";
+                Debug.Log("Eroare la inserare in baza de date"); 
+
+            }
         }
         else
         {
-            modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
+           // modalWindow.GetComponent<PopupWindowManager>().OpenWindow();
             popoutText.text = err_nume + "<br>" + err_prenume + "<br>" + err_email + "<br>" + err_confirmare + "<br>" + err_parola + "<br>";
             print("erori");
 

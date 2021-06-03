@@ -1090,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 224351876670727240, guid: 460c5f7def2d0894692d5afd37d6eb19,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 764
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224351876670727240, guid: 460c5f7def2d0894692d5afd37d6eb19,
         type: 3}
@@ -1100,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 224351876670727240, guid: 460c5f7def2d0894692d5afd37d6eb19,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224351876670727240, guid: 460c5f7def2d0894692d5afd37d6eb19,
         type: 3}
@@ -2587,7 +2587,7 @@ MonoBehaviour:
   clickSound: {fileID: 0}
   buttonVar: {fileID: 0}
   normalImage: {fileID: 1350307265}
-  normalText: {fileID: 0}
+  normalText: {fileID: 2050254862}
   soundSource: {fileID: 0}
   rippleParent: {fileID: 2028275697}
   useCustomContent: 0
