@@ -21,7 +21,7 @@ public class MenuController : MonoBehaviour
     {
         //popupMenu = GameObject.Find("PopUpMenu");
         popupMenu1 = GameObject.Find("ContentPopUpMenu");
-        modalWindow = GameObject.Find("Style 1");
+        modalWindow = GameObject.Find("PopUpInfoParcare");
         poi = gameObject.GetComponentInParent<PoiLabelTextSetter>();
     }
 
