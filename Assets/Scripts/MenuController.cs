@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mapbox.Examples;
-using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;

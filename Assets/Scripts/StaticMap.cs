@@ -16,7 +16,6 @@ public class StaticMap : MonoBehaviour
     [SerializeField] private string APIkey = "AIzaSyAniMzEdl6VtCjCJmcUFENK26BtI1Zby3E";
     [SerializeField] private DeviceLocation deviceLocation;
     [SerializeField] private SpawnOnMap creator;
-    [SerializeField] private DBManager DBManager;
     public bool getFromGoogle = false;
     private string keyUrl;
     public IEnumerator GetParkingSpots(double lat, double lon)

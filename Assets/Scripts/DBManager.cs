@@ -3,15 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DBManager : MonoBehaviour
+public static class DBManager
 {
+<<<<<<< Updated upstream
     private string secretKey = "noworrypSecretKey"; // Edit this value and make sure it's the same as the one stored on the server
     private string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
     private string insertUserURL = "http://noworryparking.online/insertUser.php?"; //be sure to add a ? to your url if using WWW
 
+=======
+    static private string secretKey = "noworrypSecretKey"; // Edit this value and make sure it's the same as the one stored on the server
+    static string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
+    static private string userURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
+    public static IEnumerator LogIn(string email, string password)
+    {
+        string hashedPass = Md5Sum(password);
+        string hash = Md5Sum(email + hashedPass + secretKey);
+        string url = userURL + "email="+ WWW.EscapeURL(email) + "&pass="+ hashedPass + "&hash=" + hash;
+        Debug.Log("LogIn URL: "+url);
+        WWW hs_post = new WWW(url);
+        yield return hs_post; // Wait until the download is done
+>>>>>>> Stashed changes
 
+        if (hs_post.error != null)
+        {
+            Debug.Log("There was an error while trying to log in:" + hs_post.error);
+        }
+        Debug.Log(hs_post.text);
+        //TO DO: Daca returneaza 1 inseamna ca e corect login, setez user.email = email
+       
+    }
     // remember to use StartCoroutine when calling this function!
-    public IEnumerator InsertParking(ParkingSpot parking)
+    public static IEnumerator InsertParking(ParkingSpot parking)
     {
         //This connects to a server side php script that will add the name and score to a MySQL DB.
         // Supply it with a string representing the players name and the players score.
@@ -24,16 +46,17 @@ public class DBManager : MonoBehaviour
         string hash = Md5Sum(name + locatie + secretKey);
 
         string post_url = insertParkingURL + "id=" + WWW.EscapeURL(id) + "&name=" + WWW.EscapeURL(name) + "&lng=" + lng + "&lat=" + lat + "&nrloc=" + nrloc  +"&loc=" + WWW.EscapeURL(locatie) + "&hash=" + hash;
-        print(post_url);
+       Debug.Log(post_url);
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);
         yield return hs_post; // Wait until the download is done
 
         if (hs_post.error != null)
         {
-            print("There was an error posting the high score: " + hs_post.error);
+            Debug.Log("There was an error inserting the parking: " + hs_post.error);
         }
     }
+<<<<<<< Updated upstream
     public IEnumerator InsertUser(string nume, string prenume, string email, string parola)
     {
         //This connects to a server side php script that will add the name and score to a MySQL DB.
@@ -55,6 +78,9 @@ public class DBManager : MonoBehaviour
 
 
     private string Md5Sum(string strToEncrypt)
+=======
+    static private string Md5Sum(string strToEncrypt)
+>>>>>>> Stashed changes
     {
         System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding();
         byte[] bytes = ue.GetBytes(strToEncrypt);
