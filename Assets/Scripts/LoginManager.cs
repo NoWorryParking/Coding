@@ -13,7 +13,7 @@ public class LoginManager : MonoBehaviour
     {
         Debug.Log("Email: " + email.text);
         Debug.Log("Password: " + password.text);
-        StartCoroutine(DBManager.LogIn(email.text,password.text, delegate() { SceneManager.LoadScene("POIPlacement"); }));
+        StartCoroutine(DBManager.LogIn(email.text,password.text, delegate() { Debug.Log(User.email);  SceneManager.LoadScene("POIPlacement"); }));
 
         //TO DO: Apare mesaj de eroare daca n-a mers coroutitina
     }

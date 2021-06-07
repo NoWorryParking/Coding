@@ -10,13 +10,13 @@ public class DBManager : MonoBehaviour
 
     static private string secretKey = "noworrypSecretKey"; // Edit this value and make sure it's the same as the one stored on the server
     static string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
-    static private string userURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
+    static private string loginURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
     static private string insertUserURL = "http://noworryparking.online/insertUser.php?";
     public static IEnumerator LogIn(string email, string password, Action toDo)
     {
         string hashedPass = Md5Sum(password);
         string hash = Md5Sum(email + hashedPass + secretKey);
-        string url = userURL + "email="+ WWW.EscapeURL(email) + "&parola="+ hashedPass + "&hash=" + hash;
+        string url = loginURL + "email="+ WWW.EscapeURL(email) + "&parola="+ hashedPass + "&hash=" + hash;
         Debug.Log("LogIn URL: "+url);
         WWW hs_post = new WWW(url);
         yield return hs_post; // Wait until the download is done
@@ -35,6 +35,7 @@ public class DBManager : MonoBehaviour
        
        
     }
+
     // remember to use StartCoroutine when calling this function!
     public static IEnumerator InsertParking(ParkingSpot parking)
     {
@@ -60,8 +61,9 @@ public class DBManager : MonoBehaviour
         }
     }
 
-    public static IEnumerator InsertUser(string nume, string prenume, string email, string parola)
+    public static IEnumerator InsertUser(string nume, string prenume, string email, string parola, Action toDoSuccess, Action toDoFail)
     {
+        Debug.Log("Called InsertUser");
         //This connects to a server side php script that will add the name and score to a MySQL DB.
         // Supply it with a string representing the players name and the players score.
         string hash = Md5Sum(prenume + nume + email + secretKey);
@@ -79,7 +81,16 @@ public class DBManager : MonoBehaviour
         }
         else
         {
-            User.email = email;
+         if(hs_post.text == "ok")
+            {
+                User.email = email;
+                toDoSuccess();
+            }
+                if(hs_post.text == "emailul exista deja")
+            {
+                toDoFail();
+            }
+
         }
         Debug.Log(hs_post.text); //TO DO: Daca e cu succes register, setez email
         

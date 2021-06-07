@@ -17,7 +17,7 @@ public class Register : MonoBehaviour
   
     public Text popoutText;
     public GameObject modalWindow;
-   
+
     public void GetAllTextFromInputFields()
     {
         string err_email = "";
@@ -29,7 +29,7 @@ public class Register : MonoBehaviour
 
         Regex regex_mail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
-        if (email.text != "" )
+        if (email.text != "")
         {
             Match match = regex_mail.Match(email.text);
             if (!match.Success)
@@ -70,7 +70,7 @@ public class Register : MonoBehaviour
 
         if (parola.text != "")
         {
-            if(parola.text.Length < 6)
+            if (parola.text.Length < 6)
             {
                 err_parola = "Parola trb sa contina minim 6 caractere";
             }
@@ -83,7 +83,7 @@ public class Register : MonoBehaviour
 
         if (confirmare.text != "")
         {
-            if(confirmare.text != parola.text)
+            if (confirmare.text != parola.text)
             {
                 err_confirmare = "Parola si confirmarea nu se potrivesc.";
             }
@@ -96,31 +96,28 @@ public class Register : MonoBehaviour
         if (err_parola == "" && err_nume == "" && err_prenume == "" && err_email == "" && err_confirmare == "") //daca nu sunt erori
         {
             print("user " + nume + " " + prenume + "email " + email);
-           StartCoroutine(DBManager.InsertUser(nume.text, prenume.text, email.text, parola.text));
-            if (User.email != "") //Daca a avut loc cu succes
-            {
-                SceneManager.LoadScene("POIPlacement");
-            }
-            else //Afisez popup de eroare
-            {
-                modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
-                popoutText.text = "A aparut o problema la inserarea in baza de date";
-                Debug.Log("Eroare la inserare in baza de date"); 
+            StartCoroutine(DBManager.InsertUser(nume.text, prenume.text, email.text, parola.text, delegate { SceneManager.LoadScene("POIPlacement"); }, OpenErrorDialog));
 
-            }
         }
         else
         {
-           // modalWindow.GetComponent<PopupWindowManager>().OpenWindow();
-            popoutText.text = err_nume + "<br>" + err_prenume + "<br>" + err_email + "<br>" + err_confirmare + "<br>" + err_parola + "<br>";
-            print("erori");
+            // modalWindow.GetComponent<PopupWindowManager>().OpenWindow();
+            string eroare = err_nume + "<br>" + err_prenume + "<br>" + err_email + "<br>" + err_confirmare + "<br>" + err_parola + "<br>";
+            // popoutText.text = eroare;
+            Debug.Log(eroare);
 
+        } }
+
+
+
+        public void OpenErrorDialog()
+        {
+
+            modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
+            popoutText.text = "A aparut o problema la inserarea in baza de date";
+            Debug.Log("Eroare la inserare in baza de date");
         }
 
 
-
-
-
-
     }
-}
+
