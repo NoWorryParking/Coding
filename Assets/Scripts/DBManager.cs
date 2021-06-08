@@ -124,10 +124,9 @@ public class DBManager : MonoBehaviour
                
                 toDoSuccess();
             }
-            if (hs_post.text == "emailul exista deja")
-            {
+            else
                 toDoFail();
-            }
+            
 
         }
 
