@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour
        
         popupMenu1.GetComponent<MenuInfoController>().setInfo(poi.info);
         modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
-        //LeanTween.scale(popupMenu, new Vector3(1, 1, 1), 0.25f);
+       
     }
 }
 

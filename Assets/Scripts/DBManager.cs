@@ -12,6 +12,7 @@ public class DBManager : MonoBehaviour
     static string insertParkingURL = "http://noworryparking.online/insertparking.php?"; //be sure to add a ? to your url if using WWW
     static private string loginURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
     static private string insertUserURL = "http://noworryparking.online/insertUser.php?";
+    static private string reservationURL = "http://noworryparking.online/reservation.php?";
     public static IEnumerator LogIn(string email, string password, Action toDo)
     {
         string hashedPass = Md5Sum(password);
@@ -92,12 +93,46 @@ public class DBManager : MonoBehaviour
             }
 
         }
-        Debug.Log(hs_post.text); //TO DO: Daca e cu succes register, setez email
+        
         
     }
 
 
+    public static IEnumerator Rezerve(int zi, int luna, int an, int ora,int min, Action toDoSuccess, Action toDoFail)
+    {
+        Debug.Log("Called Rezerva");
+        //This connects to a server side php script that will add the name and score to a MySQL DB.
+        // Supply it with a string representing the players name and the players score.
+        var currentUser = User.email;
+        string hash = Md5Sum(zi+luna+an+ora+min+currentUser + secretKey);
+      
 
+        string post_url = insertUserURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&email=" + WWW.EscapeURL(currentUser) + "&hash=" + hash;
+        Debug.Log(post_url);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+
+        if (hs_post.error != null)
+        {
+            Debug.Log("There was an error registering" + hs_post.error);
+        }
+        else
+        {
+            if (hs_post.text == "ok")
+            {
+               
+                toDoSuccess();
+            }
+            if (hs_post.text == "emailul exista deja")
+            {
+                toDoFail();
+            }
+
+        }
+
+
+    }
     static private string Md5Sum(string strToEncrypt)
     {
         System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding();
