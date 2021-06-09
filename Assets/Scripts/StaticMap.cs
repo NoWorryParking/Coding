@@ -89,6 +89,42 @@ public class StaticMap : MonoBehaviour
                 }
             }
         }
+<<<<<<< Updated upstream
+=======
+        else //Iau parcarile din propria baza de date
+        {
+            string post_url = "http://noworryparking.online/getparkings.php?" + "lng=" + lon + "&lat=" + lat;
+            WWW webRequest = new WWW(post_url);
+            yield return webRequest; // Wait until the download is done
+            Debug.Log(webRequest.text);
+            if (webRequest.error != null)
+            {
+                print("There was an error posting the high score: " + webRequest.error);
+            }
+            var parkingList = Json.Deserialize(webRequest.text) as List<object>; //Serverul imi da o lista de dictionare
+            //Incep sa parsez raspunsul
+            foreach (var iter in parkingList)
+            {
+                var parkingDict = (Dictionary<string, object>) (iter);
+                var parsedDict = new Dictionary<string, object>();
+                foreach (var key in parkingDict.Keys)
+                    print(key + " " + parkingDict[key]);
+                parsedDict.Add("name", parkingDict["nume"]); //Fac trecerea dintre coloane
+                parsedDict.Add("lat", parkingDict["latitudine"]);
+                parsedDict.Add("lng", parkingDict["logitudine"]);
+                parsedDict.Add("vicinity", parkingDict["locatie"]);
+                parsedDict.Add("locuriTotale", parkingDict["nrtotallocuri"]);
+                /*if (parkingDict.ContainsKey("locuri_ocupate"))
+                parsedDict.Add("locuriDisp", ((int) parkingDict["nrtotallocuri"])-(int) parkingDict["locuri_ocupate"]);*/
+                parsedDict.Add("locuriDisp", parkingDict["nrlocurilibere"]);
+                ParkingSpot parking = new ParkingSpot();
+                parking.info = parsedDict;
+                creator.AddLocation(parking);
+
+            }
+            
+        }
+>>>>>>> Stashed changes
         creator.InstantiateMarkers();
     }
     //// Incercare de a lua deviceLocation
