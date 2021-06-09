@@ -3,12 +3,19 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using TMPro;
 using System;
+using Michsky.UI.ModernUIPack;
+
+
 public class Rezervare : MonoBehaviour
 {
     [SerializeField] DatePickerControl datePicker;
     [SerializeField] DatePickerControl timePicker;
     [SerializeField] TMP_InputField nrOre;
     [SerializeField] TMP_InputField nrInmatriculare;
+
+    [SerializeField] TextMeshProUGUI errorMessage;
+    [SerializeField] TextMeshProUGUI title;
+    [SerializeField] GameObject notification;
    
     
     private Regex nr = new Regex("[A-Z][A-Z]-[0-9][0-9][0-9]?[-][A-Z]{3}");
@@ -27,7 +34,7 @@ public class Rezervare : MonoBehaviour
         String errorMsg = "";
         if (!checkDateToBeInFuture(zi, luna, an, ora, minut))
         { Debug.Log("Rezervarea trebuie sa fie in viitor");
-            errorMsg += "Rezervarea trebuie sa fie in viitor.\n" ;
+            errorMsg += "Rezervarea trebuie sa fie in viitor.\n\n";
             ok = false;
         }
         else
@@ -35,18 +42,29 @@ public class Rezervare : MonoBehaviour
             Debug.Log("Data: " + zi + " " + luna + " " + an);
             Debug.Log("Ora: " + ora + " " + minut);
         }
-        if (int.Parse(timpRezervat) > 0)
-            Debug.Log("Nr ore: " + timpRezervat);
-        else
-        { Debug.Log("Trebuie sa rezervi minim o ora.");
-            errorMsg += "Trebuie sa rezervi minim o ora.\n";
+
+        try
+        {
+            if (int.Parse(timpRezervat) > 0)
+                Debug.Log("Nr ore: " + timpRezervat);
+            else
+            {
+                Debug.Log("Trebuie sa rezervi minim o ora.");
+                errorMsg += "Trebuie sa rezervi minim o ora.\n\n";
+                ok = false;
+            }
+        }
+        catch(FormatException e)
+        {
+            Debug.Log("Trebuie sa rezervi minim o ora.");
+            errorMsg += "Trebuie sa rezervi minim o ora.\n\n";
             ok = false;
         }
         if (nr.IsMatch(inmatriculare))
             Debug.Log("Nr inmatriculare: " + inmatriculare);
         else
         { Debug.Log("Nr inmatriculare gresit");
-            errorMsg += "Nr inmatriculare gresit.\n";
+            errorMsg += "Nr inmatriculare gresit.\n\n";
             ok = false;
         }
 
@@ -54,10 +72,10 @@ public class Rezervare : MonoBehaviour
         {
             StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate { OnFinishRezervation("A aparut o eroare"); }));
         }
-
         else
         {
-
+            errorMessage.text = errorMsg;
+            notification.GetComponent<NotificationManager>().OpenNotification();
         }
     }
 
@@ -71,6 +89,13 @@ public class Rezervare : MonoBehaviour
     public void OnFinishRezervation(string msg)
     {
         Debug.Log(msg);
+        if(msg.Equals("Rezervarea a avut loc cu succes. "))
+        {
+            title.text = "FELICITĂRI";
+        }
+        
+        errorMessage.text = msg;
+        notification.GetComponent<NotificationManager>().OpenNotification();
         //Caut gameobject in scena si setez mesajul, fie de "rezervarea a avut succes" fie de eroare
     }
 }

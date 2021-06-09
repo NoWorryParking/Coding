@@ -13,7 +13,8 @@ public class DBManager : MonoBehaviour
     static private string loginURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
     static private string insertUserURL = "http://noworryparking.online/insertUser.php?";
     static private string reservationURL = "http://noworryparking.online/reservation.php?";
-    public static IEnumerator LogIn(string email, string password, Action toDo)
+
+    public static IEnumerator LogIn(string email, string password, Action toDo, Action toDoFail)
     {
         string hashedPass = Md5Sum(password);
         string hash = Md5Sum(email + hashedPass + secretKey);
@@ -26,12 +27,18 @@ public class DBManager : MonoBehaviour
         if (hs_post.error != null)
         {
             Debug.Log("There was an error while trying to log in:" + hs_post.error);
+            toDoFail();
+            
         }
         Debug.Log(hs_post.text);
         if (hs_post.text == "1")
         { User.email = email;
             Debug.Log("Login reusit");
             toDo();
+        }
+        else
+        {
+            toDoFail();
         }
        
        

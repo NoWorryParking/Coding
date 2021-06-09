@@ -14,9 +14,9 @@ public class Register : MonoBehaviour
     [SerializeField] private TMP_InputField prenume;
     [SerializeField] private TMP_InputField parola;
     [SerializeField] private TMP_InputField confirmare;
-  
-    public Text popoutText;
-    public GameObject modalWindow;
+
+    [SerializeField] TextMeshProUGUI errorMessage;
+    [SerializeField] GameObject notification;
 
     public void GetAllTextFromInputFields()
     {
@@ -34,12 +34,12 @@ public class Register : MonoBehaviour
             Match match = regex_mail.Match(email.text);
             if (!match.Success)
             {
-                err_email = "Email incorect.";
+                err_email = "Email incorect.\n\n";
             }
         }
         else
         {
-            err_email = "Introduceti email.";
+            err_email = "Introduceti email.\n\n";
         }
 
         if (nume.text != "")
@@ -47,12 +47,12 @@ public class Register : MonoBehaviour
             bool isDigitPresent = nume.text.Any(c => char.IsDigit(c));
             if (isDigitPresent)
             {
-                err_nume = "Nume incorect.";
+                err_nume = "Nume incorect.\n\n";
             }
         }
         else
         {
-            err_nume = "Introduceti nume.";
+            err_nume = "Introduceti nume.\n\n";
         }
 
         if (prenume.text != "")
@@ -60,37 +60,37 @@ public class Register : MonoBehaviour
             bool isDigitPresent = prenume.text.Any(c => char.IsDigit(c));
             if (isDigitPresent)
             {
-                err_nume = "Preume incorect.";
+                err_nume = "Preume incorect.\n\n";
             }
         }
         else
         {
-            err_prenume = "Introduceti prenume.";
+            err_prenume = "Introduceti prenume.\n\n";
         }
 
         if (parola.text != "")
         {
             if (parola.text.Length < 6)
             {
-                err_parola = "Parola trb sa contina minim 6 caractere";
+                err_parola = "Parola trb sa contina minim 6 caractere.\n\n";
             }
 
         }
         else
         {
-            err_parola = "Introduceti parola.";
+            err_parola = "Introduceti parola.\n\n";
         }
 
         if (confirmare.text != "")
         {
             if (confirmare.text != parola.text)
             {
-                err_confirmare = "Parola si confirmarea nu se potrivesc.";
+                err_confirmare = "Parola si confirmarea nu se potrivesc.\n\n";
             }
         }
         else
         {
-            err_confirmare = "Introduceti confirmare parola.";
+            err_confirmare = "Introduceti confirmare parola.\n\n";
         }
 
         if (err_parola == "" && err_nume == "" && err_prenume == "" && err_email == "" && err_confirmare == "") //daca nu sunt erori
@@ -101,9 +101,10 @@ public class Register : MonoBehaviour
         }
         else
         {
-            // modalWindow.GetComponent<PopupWindowManager>().OpenWindow();
-            string eroare = err_nume + "<br>" + err_prenume + "<br>" + err_email + "<br>" + err_confirmare + "<br>" + err_parola + "<br>";
-            // popoutText.text = eroare;
+            string eroare = err_nume + err_prenume +  err_email + err_confirmare +  err_parola ;
+            errorMessage.text = eroare;
+            notification.GetComponent<NotificationManager>().OpenNotification();
+            
             Debug.Log(eroare);
 
         } }
@@ -113,8 +114,9 @@ public class Register : MonoBehaviour
         public void OpenErrorDialog()
         {
 
-            modalWindow.GetComponent<ModalWindowManager>().OpenWindow();
-            popoutText.text = "A aparut o problema la inserarea in baza de date";
+            errorMessage.text = "Exista deja un cont asociat email-ului introdus.";
+            notification.GetComponent<NotificationManager>().OpenNotification();
+            
             Debug.Log("Eroare la inserare in baza de date");
         }
 
