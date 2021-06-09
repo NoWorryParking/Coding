@@ -9,7 +9,8 @@ public class Rezervare : MonoBehaviour
     [SerializeField] DatePickerControl timePicker;
     [SerializeField] TMP_InputField nrOre;
     [SerializeField] TMP_InputField nrInmatriculare;
-
+   
+    
     private Regex nr = new Regex("[A-Z][A-Z]-[0-9][0-9][0-9]?[-][A-Z]{3}");
     public void rezerva() // TO DO: Mesajele de eroare
     {
@@ -23,8 +24,10 @@ public class Rezervare : MonoBehaviour
         var minut = tmp.Minute;
         var timpRezervat = nrOre.text;
         var inmatriculare = nrInmatriculare.text;
+        String errorMsg = "";
         if (!checkDateToBeInFuture(zi, luna, an, ora, minut))
         { Debug.Log("Rezervarea trebuie sa fie in viitor");
+            errorMsg += "Rezervarea trebuie sa fie in viitor.\n" ;
             ok = false;
         }
         else
@@ -36,18 +39,25 @@ public class Rezervare : MonoBehaviour
             Debug.Log("Nr ore: " + timpRezervat);
         else
         { Debug.Log("Trebuie sa rezervi minim o ora.");
+            errorMsg += "Trebuie sa rezervi minim o ora.\n";
             ok = false;
         }
         if (nr.IsMatch(inmatriculare))
             Debug.Log("Nr inmatriculare: " + inmatriculare);
         else
         { Debug.Log("Nr inmatriculare gresit");
+            errorMsg += "Nr inmatriculare gresit.\n";
             ok = false;
         }
 
         if (ok) //Daca toate datele au fost introduse corect, trimit request de inregistrare
         {
             StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate { OnFinishRezervation("A aparut o eroare"); }));
+        }
+
+        else
+        {
+
         }
     }
 

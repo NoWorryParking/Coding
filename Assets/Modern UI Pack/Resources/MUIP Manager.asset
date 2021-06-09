@@ -63,15 +63,15 @@ MonoBehaviour:
   modalWindowContentPanelColor: {r: 1, g: 1, b: 1, a: 0.019607844}
   notificationTitleFont: {fileID: 11400000, guid: fa328c1ae3ffb6b4583cf371153b0be6,
     type: 2}
-  notificationTitleFontSize: 22.5
+  notificationTitleFontSize: 20
   notificationDescriptionFont: {fileID: 11400000, guid: 2f17e8bb3967fe14093d5fec798fffd9,
     type: 2}
   notificationDescriptionFontSize: 18
   notificationThemeType: 0
   notificationBackgroundColor: {r: 0.08235294, g: 0.36078432, b: 0.6431373, a: 1}
-  notificationTitleColor: {r: 0.6509804, g: 0.22745098, b: 0.19215687, a: 1}
+  notificationTitleColor: {r: 0.65882355, g: 0.09019608, b: 0.09019608, a: 1}
   notificationDescriptionColor: {r: 1, g: 1, b: 1, a: 1}
-  notificationIconColor: {r: 1, g: 1, b: 1, a: 1}
+  notificationIconColor: {r: 0.65882355, g: 0.09019608, b: 0.09019608, a: 1}
   progressBarLabelFont: {fileID: 11400000, guid: 84dd14695854bbc43a5faa24fcf93d0d,
     type: 2}
   progressBarLabelFontSize: 25
