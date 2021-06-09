@@ -51,8 +51,11 @@ Aplicatia Android este creata in **Unity** utilizand:
 ## Wireframe
 Un model al aplicației și câteva detalii de implementare se pot găsi [aici](https://app.moqups.com/TB9tngLAkw/view)
 
-## Diagrama Conceptuala
+## Diagrama Conceptuală
 ![bd](https://github.com/NoWorryParking/Coding/blob/main/NoWorryParking.vpd.png)
+
+## Diagrama UML de stări
+![bd](https://github.com/NoWorryParking/Coding/blob/main/NoWorryPStateDiagram.png)
 
 ## Cum se importa proiect nou
 ```
