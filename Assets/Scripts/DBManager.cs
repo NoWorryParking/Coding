@@ -107,7 +107,7 @@ public class DBManager : MonoBehaviour
         string hash = Md5Sum(zi+luna+an+ora+min+currentUser + secretKey);
       
 
-        string post_url = insertUserURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&hash=" + hash;
+        string post_url = insertUserURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;
         Debug.Log(post_url);
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);

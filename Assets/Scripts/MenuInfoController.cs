@@ -18,6 +18,7 @@ public class MenuInfoController : MonoBehaviour
 
     public void setInfo(Dictionary<string,object> info)
     {
+        Debug.Log("Pressed parkingID: " +info["id"]);
         if (info.ContainsKey("name"))
         {
             name.text = "Nume: "+ info["name"].ToString();

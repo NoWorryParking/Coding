@@ -5,4 +5,5 @@ using UnityEngine;
 static public class User
 {
     public static string email = "";
+    public static string intentParkingSpotId = "";
 }

@@ -120,6 +120,7 @@ public class StaticMap : MonoBehaviour
                 parsedDict.Add("lng", parkingDict["logitudine"]);
                 parsedDict.Add("vicinity", parkingDict["locatie"]);
                 parsedDict.Add("locuriTotale", parkingDict["nrtotallocuri"]);
+                parsedDict.Add("id", parkingDict["id"]);
                 if (parkingDict.ContainsKey("locuri_ocupate"))
                 parsedDict.Add("locuriDisp", ((int) parkingDict["nrtotallocuri"])-(int) parkingDict["locuri_ocupate"]);
                 ParkingSpot parking = new ParkingSpot();

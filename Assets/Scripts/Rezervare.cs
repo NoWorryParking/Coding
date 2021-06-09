@@ -53,8 +53,9 @@ public class Rezervare : MonoBehaviour
 
     private bool checkDateToBeInFuture(int zi, int luna, int an, int ora, int min)
     {
-        var now = DateTime.Now;
-        return (an >= now.Year && luna >= now.Month && zi >= now.Day && ora >= now.Hour && min >= now.Minute);
+       
+        DateTime rezervat = new DateTime(an, luna, zi, ora, min, 59);
+        return DateTime.Compare(rezervat,DateTime.Now) >=0;
     }
 
     public void OnFinishRezervation(string msg)
