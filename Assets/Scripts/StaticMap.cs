@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Facebook.MiniJSON;
 using Mapbox.Examples;
+using System;
 
 public class StaticMap : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class StaticMap : MonoBehaviour
     //Gaseste locurile de parcare dintr-un cerc cu centrul in lat,lon (exista &rankby=distance care cere sa nu fie si radius pus, dar imi da ZERO_RESULTS for now)
     //Si apeleaza GetGoogleMap
     {
+        creator.cleanMap();
         User.lastlat = lat;
         User.lastlng = lon;
         Debug.Log("Started getting parkings");
@@ -91,7 +93,7 @@ public class StaticMap : MonoBehaviour
                             parking.info = parkingDict;
                             parking.info.Add("lat", float.Parse(locationDict["lat"].ToString()));
                             parking.info.Add("lng", float.Parse(locationDict["lng"].ToString()));
-                            print(parking.info.Keys);
+                          
                             creator.AddLocation(parking);
 
                         }
@@ -107,7 +109,7 @@ public class StaticMap : MonoBehaviour
             Debug.Log(webRequest.text);
             if (webRequest.error != null)
             {
-                print("There was an error posting the high score: " + webRequest.error);
+                print("There was an error getting the parkings: " + webRequest.error);
             }
             var parkingList = Json.Deserialize(webRequest.text) as List<object>; //Serverul imi da o lista de dictionare
             //Incep sa parsez raspunsul
@@ -121,7 +123,13 @@ public class StaticMap : MonoBehaviour
                 parsedDict.Add("vicinity", parkingDict["locatie"]);
                 parsedDict.Add("locuriTotale", parkingDict["nrtotallocuri"]);
                 parsedDict.Add("id", parkingDict["id"]);
-                parsedDict.Add("locuriDisp", parkingDict["nrlocurilibere"]);
+                int nrLocuriOcupate = 0;
+                if (parkingDict["nrlocuriocupate"] != null)
+                    nrLocuriOcupate = int.Parse(parkingDict["nrlocuriocupate"].ToString());
+
+                Debug.Log(nrLocuriOcupate);
+
+                parsedDict.Add("locuriDisp", int.Parse(parkingDict["nrtotallocuri"].ToString())-nrLocuriOcupate);
                 ParkingSpot parking = new ParkingSpot();
                 parking.info = parsedDict;
                 creator.AddLocation(parking);

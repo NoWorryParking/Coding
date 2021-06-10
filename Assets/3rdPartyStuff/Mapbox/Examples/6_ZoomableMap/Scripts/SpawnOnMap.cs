@@ -62,5 +62,10 @@
                 _spawnedObjects.Add(instance);
             }
         }
+
+        public void cleanMap()
+        {
+            _spawnedObjects.Clear();
+        }
     }
 }
