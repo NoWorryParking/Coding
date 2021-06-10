@@ -16,7 +16,7 @@ public class Rezervare : MonoBehaviour
     [SerializeField] TextMeshProUGUI errorMessage;
     [SerializeField] TextMeshProUGUI title;
     [SerializeField] GameObject notification;
-   
+    [SerializeField] NotificationManager notificationManager;
     
     private Regex nr = new Regex("[A-Z][A-Z]-[0-9][0-9][0-9]?[-][A-Z]{3}");
     public void rezerva() // TO DO: Mesajele de eroare
@@ -70,7 +70,7 @@ public class Rezervare : MonoBehaviour
 
         if (ok) //Daca toate datele au fost introduse corect, trimit request de inregistrare
         {
-            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate { StartCoroutine(GameObject.Find("Map").GetComponent<StaticMap>().GetParkingSpots(User.lastlat, User.lastlng)); OnFinishRezervation("A aparut o eroare"); }));
+            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { refreshMap(); OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate {  OnFinishRezervation("A aparut o eroare"); }));
         }
         else
         {
@@ -89,13 +89,20 @@ public class Rezervare : MonoBehaviour
     public void OnFinishRezervation(string msg)
     {
         Debug.Log(msg);
-        if(msg.Equals("Rezervarea a avut loc cu succes. "))
+        if(msg.Equals("Rezervarea a avut loc cu succes"))
         {
-            title.text = "FELICITĂRI";
+            Debug.Log("Changed title");
+            title.text = "Felicitari";
+            notificationManager.title = "Felicitari";
         }
         
         errorMessage.text = msg;
         notification.GetComponent<NotificationManager>().OpenNotification();
         //Caut gameobject in scena si setez mesajul, fie de "rezervarea a avut succes" fie de eroare
+    }
+
+    private void refreshMap()
+        {
+        StartCoroutine(GameObject.Find("Map").GetComponent<StaticMap>().GetParkingSpots(User.lastlat, User.lastlng));
     }
 }
