@@ -111,7 +111,7 @@ public class DBManager : MonoBehaviour
         //This connects to a server side php script that will add the name and score to a MySQL DB.
         // Supply it with a string representing the players name and the players score.
         var currentUser = User.email;
-        string hash = Md5Sum(zi+luna+an+ora+min+currentUser + secretKey);
+        string hash = Md5Sum(currentUser + secretKey);
       
 
         string post_url = reservationURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;

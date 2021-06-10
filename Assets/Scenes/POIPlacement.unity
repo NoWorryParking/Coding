@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Num\u0103rul de \xEEnmatriculare"
+  m_text: "Num\u0103rul de \xEEnmatriculare\n(B-20-ABC)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
   m_sharedMaterial: {fileID: 21539420542967178, guid: 4bd810f1cbcb0f446a8f5a31453e243f,
@@ -4302,8 +4302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 168.58548, y: 0}
-  m_SizeDelta: {x: 330, y: 0}
+  m_AnchoredPosition: {x: 212.13203, y: 0}
+  m_SizeDelta: {x: 404.26407, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534793061
 MonoBehaviour:
@@ -8317,8 +8317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 138.58548, y: 0}
-  m_SizeDelta: {x: 241.17096, y: 0}
+  m_AnchoredPosition: {x: 182.13203, y: 0}
+  m_SizeDelta: {x: 328.26407, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1132520652
 GameObject:
@@ -15754,7 +15754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 168.58548, y: 0}
+  m_AnchoredPosition: {x: 212.13203, y: 0}
   m_SizeDelta: {x: 342.36243, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052535296
