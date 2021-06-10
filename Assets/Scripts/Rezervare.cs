@@ -70,7 +70,7 @@ public class Rezervare : MonoBehaviour
 
         if (ok) //Daca toate datele au fost introduse corect, trimit request de inregistrare
         {
-            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate { OnFinishRezervation("A aparut o eroare"); }));
+            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, delegate { OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate { StartCoroutine(GameObject.Find("Map").GetComponent<StaticMap>().GetParkingSpots(User.lastlat, User.lastlng)); OnFinishRezervation("A aparut o eroare"); }));
         }
         else
         {

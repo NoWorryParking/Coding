@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
 
     void OnMouseUpAsButton()
     {
+
         User.intentParkingSpotId = (string) poi.info["id"];
         popupMenu1.GetComponent<MenuInfoController>().setInfo(poi.info);
         modalWindow.GetComponent<ModalWindowManager>().OpenWindow();

@@ -22,6 +22,8 @@ public class StaticMap : MonoBehaviour
     //Gaseste locurile de parcare dintr-un cerc cu centrul in lat,lon (exista &rankby=distance care cere sa nu fie si radius pus, dar imi da ZERO_RESULTS for now)
     //Si apeleaza GetGoogleMap
     {
+        User.lastlat = lat;
+        User.lastlng = lon;
         Debug.Log("Started getting parkings");
         if (getFromGoogle)
         {
@@ -113,16 +115,13 @@ public class StaticMap : MonoBehaviour
             {
                 var parkingDict = (Dictionary<string, object>) (iter);
                 var parsedDict = new Dictionary<string, object>();
-                foreach (var key in parkingDict.Keys)
-                    print(key + " " + parkingDict[key]);
                 parsedDict.Add("name", parkingDict["nume"]); //Fac trecerea dintre coloane
                 parsedDict.Add("lat", parkingDict["latitudine"]);
                 parsedDict.Add("lng", parkingDict["logitudine"]);
                 parsedDict.Add("vicinity", parkingDict["locatie"]);
                 parsedDict.Add("locuriTotale", parkingDict["nrtotallocuri"]);
                 parsedDict.Add("id", parkingDict["id"]);
-                if (parkingDict.ContainsKey("locuri_ocupate"))
-                parsedDict.Add("locuriDisp", ((int) parkingDict["nrtotallocuri"])-(int) parkingDict["locuri_ocupate"]);
+                parsedDict.Add("locuriDisp", parkingDict["nrlocurilibere"]);
                 ParkingSpot parking = new ParkingSpot();
                 parking.info = parsedDict;
                 creator.AddLocation(parking);
