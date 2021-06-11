@@ -105,7 +105,7 @@ public class DBManager : MonoBehaviour
     }
 
 
-    public static IEnumerator Rezerve(int zi, int luna, int an, int ora,int min,string nrOre, Action toDoSuccess, Action toDoFail)
+    public static IEnumerator Rezerve(int zi, int luna, int an, int ora,int min,string nrOre, string inmatriculare, Action toDoSuccess, Action toDoFail)
     {
         Debug.Log("Called Rezerva");
         //This connects to a server side php script that will add the name and score to a MySQL DB.
@@ -114,7 +114,7 @@ public class DBManager : MonoBehaviour
         string hash = Md5Sum(currentUser + secretKey);
       
         // add nrmaticulare exact asa
-        string post_url = reservationURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;
+        string post_url = reservationURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&nrmatriculare="+WWW.EscapeURL(inmatriculare) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;
         Debug.Log(post_url);
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);

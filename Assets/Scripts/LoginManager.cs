@@ -20,7 +20,6 @@ public class LoginManager : MonoBehaviour
         Debug.Log("Password: " + password.text);
         StartCoroutine(DBManager.LogIn(email.text,password.text, delegate() { Debug.Log(User.email);  SceneManager.LoadScene("POIPlacement"); }, OpenErrorDialog));
         
-        //TO DO: Apare mesaj de eroare daca n-a mers coroutitina
     }
 
     public void goToRegister()
@@ -31,7 +30,7 @@ public class LoginManager : MonoBehaviour
 
     public void OpenErrorDialog()
     {
-        Debug.Log("Eroare la inserare in baza de date");
+        Debug.Log("Eroare la login.");
 
         errorMessage.text = "Logarea a eșuat.";
         notification.GetComponent<NotificationManager>().OpenNotification();
