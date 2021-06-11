@@ -18,7 +18,7 @@ public class Rezervare : MonoBehaviour
     [SerializeField] GameObject notification;
     [SerializeField] NotificationManager notificationManager;
     
-    private Regex nr = new Regex("[A-Z][A-Z]-[0-9][0-9][0-9]?[-][A-Z]{3}");
+    private Regex nr = new Regex("[A-Z][A-Z]?-[0-9][0-9][0-9]?[-][A-Z]{3}");
     public void rezerva() // TO DO: Mesajele de eroare
     {
         bool ok = true;

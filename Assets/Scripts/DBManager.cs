@@ -113,7 +113,7 @@ public class DBManager : MonoBehaviour
         var currentUser = User.email;
         string hash = Md5Sum(currentUser + secretKey);
       
-
+        // add nrmaticulare exact asa
         string post_url = reservationURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;
         Debug.Log(post_url);
         // Post the URL to the site and create a download object to get the result.
