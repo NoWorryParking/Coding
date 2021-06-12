@@ -70,7 +70,7 @@ public class Rezervare : MonoBehaviour
 
         if (ok) //Daca toate datele au fost introduse corect, trimit request de inregistrare
         {
-            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, inmatriculare, delegate { refreshMap(); OnFinishRezervation("Rezervarea a avut loc cu succes"); }, delegate {  OnFinishRezervation("A aparut o eroare"); }));
+            StartCoroutine(DBManager.Rezerve(zi, luna, an, ora, minut,timpRezervat, inmatriculare, delegate { IAPManager.instance.BuyHours(timpRezervat); }, delegate {  OnFinishRezervation("A aparut o eroare"); }));
         }
         else
         {

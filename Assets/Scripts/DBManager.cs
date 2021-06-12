@@ -13,7 +13,7 @@ public class DBManager : MonoBehaviour
     static private string loginURL = "http://noworryparking.online/login.php?"; //Primeste email, hashed pass si hash (atentie cum se calculeaza), returneaza id daca exista
     static private string insertUserURL = "http://noworryparking.online/insertUser.php?";
     static private string reservationURL = "http://noworryparking.online/reservation.php?";
-
+    static private string deleteReservationURL = "http://noworryparking.online/deletereservation.php?";
     public static IEnumerator LogIn(string email, string password, Action toDo, Action toDoFail)
     {
         string hashedPass = Md5Sum(password);
@@ -112,7 +112,14 @@ public class DBManager : MonoBehaviour
         // Supply it with a string representing the players name and the players score.
         var currentUser = User.email;
         string hash = Md5Sum(currentUser + secretKey);
-      
+
+        //Cache reservation for IAPManager
+        LastReservation.zi = zi;
+        LastReservation.luna = luna;
+        LastReservation.ora = ora;
+        LastReservation.minut = min;
+        LastReservation.timpRezervat = nrOre;
+        LastReservation.inmatriculare = inmatriculare;
         // add nrmaticulare exact asa
         string post_url = reservationURL + "&zi=" + zi + "&luna=" +luna + "&an=" +an + "&ora=" + ora + "&min=" + min+ "&nrore=" + nrOre+ "&email=" + WWW.EscapeURL(currentUser) + "&nrmatriculare="+WWW.EscapeURL(inmatriculare) + "&idParcare="+ User.intentParkingSpotId + "&hash=" + hash;
         Debug.Log(post_url);
@@ -135,6 +142,41 @@ public class DBManager : MonoBehaviour
             else
                 toDoFail();
             
+
+        }
+
+
+    }
+    public static IEnumerator DeleteReservation(int zi, int luna, int an, int ora, int min, string nrOre, string inmatriculare, Action toDoSuccess, Action toDoFail)
+    {
+        Debug.Log("Called Rezerva");
+        //This connects to a server side php script that will add the name and score to a MySQL DB.
+        // Supply it with a string representing the players name and the players score.
+        var currentUser = User.email;
+        string hash = Md5Sum(currentUser + secretKey);
+
+        // add nrmaticulare exact asa
+        string post_url = deleteReservationURL + "&zi=" + zi + "&luna=" + luna + "&an=" + an + "&ora=" + ora + "&min=" + min + "&nrore=" + nrOre + "&email=" + WWW.EscapeURL(currentUser) + "&nrmatriculare=" + WWW.EscapeURL(inmatriculare) + "&idParcare=" + User.intentParkingSpotId + "&hash=" + hash;
+        Debug.Log(post_url);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+
+        if (hs_post.error != null)
+        {
+            Debug.Log("There was an error deleting reservation" + hs_post.error);
+        }
+        else
+        {
+            Debug.Log(hs_post.text);
+            if (hs_post.text == "ok")
+            {
+
+                toDoSuccess();
+            }
+            else
+                toDoFail();
+
 
         }
 
