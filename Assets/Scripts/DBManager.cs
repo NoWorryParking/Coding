@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Events;
 using System;
+using Facebook.MiniJSON;
+using UnityEngine.Assertions;
 
 public class DBManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class DBManager : MonoBehaviour
     static private string insertUserURL = "http://noworryparking.online/insertUser.php?";
     static private string reservationURL = "http://noworryparking.online/reservation.php?";
     static private string deleteReservationURL = "http://noworryparking.online/deletereservation.php?";
+    static private string getHistoryURL = "http://noworryparking.online/istoric.php?";
+    static private string getActiveURL = "http://noworryparking.online/activeOrders.php?";
     public static IEnumerator LogIn(string email, string password, Action toDo, Action toDoFail)
     {
         string hashedPass = Md5Sum(password);
@@ -146,6 +150,94 @@ public class DBManager : MonoBehaviour
         }
 
 
+    }
+    public static IEnumerator GetHistory()
+    {
+        Debug.Log("Getting reservation history");
+        var currentUser = User.email;
+        string hash = Md5Sum(currentUser + secretKey);
+
+        // add nrmaticulare exact asa
+        string post_url = getHistoryURL + "&email=" + WWW.EscapeURL(currentUser) + "&hash=" + hash;
+        Debug.Log(post_url);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+
+        if (hs_post.error != null)
+        {
+            Debug.Log("There was an error getting reservation history" + hs_post.error);
+        }
+        else
+        {
+            ListController listController = GameObject.Find("Windows").GetComponent<ListController>();
+            Debug.Log(hs_post.text);
+            List<Reservation> reservations = new List<Reservation>();
+            var parkingList = Json.Deserialize(hs_post.text) as List<object>; //Serverul imi da o lista de dictionare
+            //Incep sa parsez raspunsul
+            foreach (var iter in parkingList)
+            {
+                var reservationDict = (Dictionary<string, object>) (iter);
+                Reservation newReservation = new Reservation();
+                newReservation.data = (string) reservationDict["dataRezevare"];
+                newReservation.nume = (string) reservationDict["numeParcare"];
+                newReservation.durata = (string) reservationDict["durataRezervare"];
+                newReservation.inmatriculare = (string) reservationDict["nrmatriculare"];
+                newReservation.lng = (string) reservationDict["lng"];
+                newReservation.lat = (string) reservationDict["lat"];
+  
+                reservations.Add(newReservation);
+
+            }
+            Debug.Log(reservations);
+            Assert.IsNotNull(listController);
+            listController.populateList(reservations);
+
+        }
+    }
+    public static IEnumerator GetActive()
+    {
+        Debug.Log("Getting reservation history");
+        var currentUser = User.email;
+        string hash = Md5Sum(currentUser + secretKey);
+
+        // add nrmaticulare exact asa
+        string post_url = getActiveURL + "&email=" + WWW.EscapeURL(currentUser) + "&hash=" + hash;
+        Debug.Log(post_url);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+
+        if (hs_post.error != null)
+        {
+            Debug.Log("There was an error getting reservation history" + hs_post.error);
+        }
+        else
+        {
+            ListController listController = GameObject.Find("Windows").GetComponent<ListController>();
+            Debug.Log(hs_post.text);
+            List<Reservation> reservations = new List<Reservation>();
+            var parkingList = Json.Deserialize(hs_post.text) as List<object>; //Serverul imi da o lista de dictionare
+            //Incep sa parsez raspunsul
+            foreach (var iter in parkingList)
+            {
+                var reservationDict = (Dictionary<string, object>) (iter);
+                Reservation newReservation = new Reservation();
+                newReservation.data = (string) reservationDict["dataRezevare"];
+                newReservation.nume = (string) reservationDict["numeParcare"];
+                newReservation.durata = (string) reservationDict["durataRezervare"];
+                newReservation.inmatriculare = (string) reservationDict["nrmatriculare"];
+                newReservation.lng = (string) reservationDict["lng"];
+                newReservation.lat = (string) reservationDict["lat"];
+
+                reservations.Add(newReservation);
+
+            }
+            Debug.Log(reservations);
+            Assert.IsNotNull(listController);
+            listController.populateActiveList(reservations);
+
+        }
     }
     public static IEnumerator DeleteReservation(int zi, int luna, int an, int ora, int min, string nrOre, string inmatriculare, Action toDoSuccess, Action toDoFail)
     {

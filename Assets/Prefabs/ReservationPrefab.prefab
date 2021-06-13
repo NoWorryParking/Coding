@@ -36,9 +36,9 @@ RectTransform:
   m_Father: {fileID: 1615232058344868335}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6284, y: -40.277283}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1615232057326094340
@@ -331,7 +331,18 @@ MonoBehaviour:
   buttonText: "Vezi pe hart\u0103"
   clickEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3330113105719919289}
+        m_MethodName: SeeOnMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hoverEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -600,7 +611,7 @@ GameObject:
   - component: {fileID: 1615232058204931924}
   - component: {fileID: 1615232058204931927}
   m_Layer: 5
-  m_Name: Ora
+  m_Name: Inmatriculare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +663,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ora:'
+  m_text: "Nr \xEEnmatriculare:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -753,9 +764,9 @@ RectTransform:
   m_Father: {fileID: 1615232058344868335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104.0428, y: -40.277283}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1615232058235684172
@@ -785,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1.  Rompetrol \n     data: 12-03-2021\n     \n    "
+  m_text: "1.  Rompetrol \n     Data: 12-03-2021\n     \n    "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -888,10 +899,10 @@ RectTransform:
   m_Father: {fileID: 1615232058576085735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 135.5856, y: -40.277283}
-  m_SizeDelta: {x: 271.1712, y: 80.554565}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 80.554565}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615232058344868332
 MonoBehaviour:
@@ -1064,7 +1075,7 @@ GameObject:
   - component: {fileID: 1615232058495814332}
   - component: {fileID: 1615232058495814335}
   m_Layer: 5
-  m_Name: NrLocuri
+  m_Name: Durata
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,7 +1127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Num\u0103r locuri:"
+  m_text: "Durat\u0103:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1199,8 +1210,9 @@ GameObject:
   - component: {fileID: 1615232058576085733}
   - component: {fileID: 1615232058576085732}
   - component: {fileID: 1615232058576085728}
+  - component: {fileID: 3330113105719919289}
   m_Layer: 5
-  m_Name: Item
+  m_Name: ReservationPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1225,7 +1237,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 155.5856, y: -110.27728}
-  m_SizeDelta: {x: 271.1712, y: 80.554565}
+  m_SizeDelta: {x: 271.1712, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1615232058576085731
 CanvasRenderer:
@@ -1315,6 +1327,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &3330113105719919289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615232058576085734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d095c42c10ba2a47a4181c9faa33a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numeData: {fileID: 1615232058235684175}
+  durata: {fileID: 1615232058495814335}
+  inmatriculare: {fileID: 1615232058204931927}
+  button: {fileID: 0}
 --- !u!1 &1615232058774455795
 GameObject:
   m_ObjectHideFlags: 0
