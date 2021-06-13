@@ -8,6 +8,8 @@ public class Meniu : MonoBehaviour, IPointerDownHandler
 {
     public static bool menuIsOpened = false;
     public GameObject menu;
+    public GameObject istoric;
+    public GameObject rezervari;
     
 
     
@@ -28,6 +30,8 @@ public class Meniu : MonoBehaviour, IPointerDownHandler
     void Close()
     {
         menuIsOpened = false;
+        istoric.SetActive(false);
+        rezervari.SetActive(false);
         menu.SetActive(false);
     }
 
