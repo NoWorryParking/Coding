@@ -52,7 +52,7 @@ Aplicatia Android este creata in **Unity** utilizand:
 Un model al aplicației și câteva detalii de implementare se pot găsi [aici](https://app.moqups.com/TB9tngLAkw/view)
 
 ## Diagrama Conceptuală
-![bd](https://github.com/NoWorryParking/Coding/blob/main/NoWorryParking.vpd.png)
+![image](https://user-images.githubusercontent.com/61518083/121806338-19626800-cc58-11eb-950e-e1dc76f2740e.png)
 
 ## Diagrama UML de stări
 ![bd](https://github.com/NoWorryParking/Coding/blob/main/NoWorryPStateDiagram.png)
