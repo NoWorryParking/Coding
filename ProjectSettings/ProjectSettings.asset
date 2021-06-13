@@ -738,10 +738,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 64887d98-57eb-435a-9137-b5c69166dba0
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: NoWorryParking
+  organizationId: unity_9gs08v-_f3oymg
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
