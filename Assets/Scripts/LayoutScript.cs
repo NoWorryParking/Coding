@@ -8,7 +8,8 @@ public class LayoutScript : MonoBehaviour
 {
 
     public VerticalLayoutGroup vertLayoutGroup;
-    public RectTransform exampleChild;
+    
+    
 
     private void Start()
     {
@@ -24,7 +25,6 @@ public class LayoutScript : MonoBehaviour
         vertLayoutGroup.CalculateLayoutInputVertical();
         vertLayoutGroup.SetLayoutHorizontal();
         vertLayoutGroup.SetLayoutVertical();
-
-        //Debug.Log("apel");
+        
     }
 }

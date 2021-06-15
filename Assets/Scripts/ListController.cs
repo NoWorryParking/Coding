@@ -35,7 +35,8 @@ public class ListController : MonoBehaviour
     }
     public void populateList(List<Reservation> reservations)
     {
-        for (int i = 0; i <listaIstoric.transform.childCount; i++)
+
+        for (int i = 1; i <listaIstoric.transform.childCount; i++)
         {
             GameObject child = listaIstoric.transform.GetChild(i).gameObject;
             child.Destroy();

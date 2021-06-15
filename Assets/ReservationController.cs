@@ -25,6 +25,26 @@ public class ReservationController : MonoBehaviour
     public void SeeOnMap()
     {var userInput = GameObject.Find("UserInput").GetComponent<InputField>();
 
-    userInput.onEndEdit.Invoke(lng+","+lat);
+        userInput.onEndEdit.Invoke(lng+","+lat);
+        var istoric = GameObject.Find("Istoric");
+        var rezActiv = GameObject.Find("RezervariActive");
+        var win = GameObject.Find("Windows");
+        try
+        {
+            istoric.SetActive(false);
+        }
+        catch(System.NullReferenceException e)
+        {
+            Debug.Log("Exception");
+        }
+        try
+        {
+            rezActiv.SetActive(false);
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.Log("Exception");
+        }
+        win.SetActive(false);
     }
 }
