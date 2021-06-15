@@ -174,6 +174,10 @@ public class DBManager : MonoBehaviour
             Debug.Log(hs_post.text);
             List<Reservation> reservations = new List<Reservation>();
             var parkingList = Json.Deserialize(hs_post.text) as List<object>; //Serverul imi da o lista de dictionare
+            if (parkingList == null)
+            {       Debug.Log("Eroare cand s-a luat din baza de date");
+            yield return null;
+        }
             //Incep sa parsez raspunsul
             foreach (var iter in parkingList)
             {
