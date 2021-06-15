@@ -53,6 +53,10 @@ Un model al aplicației și câteva detalii de implementare se pot găsi [aici](
 ## Diagrama UML de stări
 ![bd](https://github.com/NoWorryParking/Coding/blob/main/NoWorryPStateDiagram.png)
 
+## [Backlog](https://github.com/orgs/NoWorryParking/projects/1)
+
+## [Bug reporting]()
+
 ## Cum se importa proiect nou
 ```
 D:cale_folder\Coding-main\Assets\Scenes
