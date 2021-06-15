@@ -9,7 +9,7 @@ Vrei sa uiti de cautarea frenetica a parcarii in captiala sau de stresul de a pl
 * [Iuga Paula](https://github.com/iuga-paula)
 * [Nedelcu Radu-Andrei](https://github.com/NedelcuRadu)
 
-## [Demo](https://drive.google.com/drive/folders/1qRKax4kOPfzVm5NZvZRZZ_i4yyORVmpn?usp=sharing)
+## [Demo](https://drive.google.com/file/d/117l5bA6Nf0wC51igSB-6kePkw7okigHM/view?usp=sharing)
 
 ## User stories
 _Ca un ... as vrea ..., ca sa pot/ pentru a putea..._
