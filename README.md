@@ -9,6 +9,8 @@ Vrei sa uiti de cautarea frenetica a parcarii in captiala sau de stresul de a pl
 * [Iuga Paula](https://github.com/iuga-paula)
 * [Nedelcu Radu-Andrei](https://github.com/NedelcuRadu)
 
+## [Demo](https://drive.google.com/drive/folders/1qRKax4kOPfzVm5NZvZRZZ_i4yyORVmpn?usp=sharing)
+
 ## User stories
 _Ca un ... as vrea ..., ca sa pot/ pentru a putea..._
 1. Ca un turist, as vrea  sa stiu care e cel mai apropiat loc de parcare fata de destinatia mea, pentru a putea vizita cat mai multe obiective intr-un timp cat mai scurt.
