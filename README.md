@@ -55,7 +55,11 @@ Un model al aplicației și câteva detalii de implementare se pot găsi [aici](
 
 ## [Backlog](https://github.com/orgs/NoWorryParking/projects/1)
 
-## [Bug reporting]()
+## [Bug reporting](https://github.com/NoWorryParking/Coding/issues?q=is%3Aissue+is%3Aclosed)
+
+## Teste unitare
+![image](https://user-images.githubusercontent.com/61518083/122091413-70f80380-ce11-11eb-9f63-f35129ce1782.png)
+
 
 ## Cum se importa proiect nou
 ```
